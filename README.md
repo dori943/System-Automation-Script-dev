@@ -135,9 +135,9 @@ useradd -m -s /bin/bash agent-dev
 useradd -m -s /bin/bash agent-test
 
 # 비밀번호 설정
-echo "agent-admin:Admin1234!" | chpasswd
-echo "agent-dev:Dev1234!" | chpasswd
-echo "agent-test:Test1234!" | chpasswd
+echo "" | chpasswd
+echo "" | chpasswd
+echo "" | chpasswd
 
 # agent-common: admin, dev, test 모두
 usermod -aG agent-common agent-admin
