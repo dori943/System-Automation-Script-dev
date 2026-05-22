@@ -311,7 +311,7 @@ cat >> /home/agent-admin/.bashrc << 'EOF'
 export AGENT_HOME=/home/agent-admin/agent-app
 export AGENT_PORT=15034
 export AGENT_UPLOAD_DIR=$AGENT_HOME/upload_files
-export AGENT_KEY_PATH=$AGENT_HOME/api_keys/t_secret.key
+export AGENT_KEY_PATH=$AGENT_HOME/api_keys/secret.key
 export AGENT_LOG_DIR=/var/log/agent-app
 EOF
 
@@ -320,17 +320,17 @@ cat >> /etc/environment << 'EOF'
 AGENT_HOME=/home/agent-admin/agent-app
 AGENT_PORT=15034
 AGENT_UPLOAD_DIR=/home/agent-admin/agent-app/upload_files
-AGENT_KEY_PATH=/home/agent-admin/agent-app/api_keys/t_secret.key
+AGENT_KEY_PATH=/home/agent-admin/agent-app/api_keys/secret.key
 AGENT_LOG_DIR=/var/log/agent-app
 EOF
 
 # 키 파일 생성
-echo "agent_api_key_test" > /home/agent-admin/agent-app/api_keys/t_secret.key
-chown agent-admin:agent-core /home/agent-admin/agent-app/api_keys/t_secret.key
-chmod 640 /home/agent-admin/agent-app/api_keys/t_secret.key
+echo "agent_api_key_test" > /home/agent-admin/agent-app/api_keys/secret.key
+chown agent-admin:agent-core /home/agent-admin/agent-app/api_keys/secret.key
+chmod 640 /home/agent-admin/agent-app/api_keys/secret.key
 
 # 확인
-cat /home/agent-admin/agent-app/api_keys/t_secret.key
+cat /home/agent-admin/agent-app/api_keys/secret.key
 grep "AGENT_" /etc/environment
 ```
 
@@ -342,7 +342,7 @@ agent_api_key_test
 AGENT_HOME=/home/agent-admin/agent-app
 AGENT_PORT=15034
 AGENT_UPLOAD_DIR=/home/agent-admin/agent-app/upload_files
-AGENT_KEY_PATH=/home/agent-admin/agent-app/api_keys/t_secret.key
+AGENT_KEY_PATH=/home/agent-admin/agent-app/api_keys/secret.key
 AGENT_LOG_DIR=/var/log/agent-app
 ```
 
@@ -373,9 +373,9 @@ su - agent-admin -c '
   export AGENT_HOME=/home/agent-admin/agent-app
   export AGENT_PORT=15034
   export AGENT_UPLOAD_DIR=$AGENT_HOME/upload_files
-  export AGENT_KEY_PATH=$AGENT_HOME/api_keys/t_secret.key
+  export AGENT_KEY_PATH=$AGENT_HOME/api_keys
   export AGENT_LOG_DIR=/var/log/agent-app
-  $AGENT_HOME/agent-app
+  $AGENT_HOME/agent-app-bin
 '
 
 # 별도 터미널에서 포트 확인
