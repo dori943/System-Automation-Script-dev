@@ -476,6 +476,33 @@ Health Check 실패 → exit 1 로 즉시 중단, 이후 로직 실행 안 함
 WARNING은 종료 없이 기록만 → 운영자가 나중에 확인 가능
 타임스탬프 포함 로그 → 언제 문제가 생겼는지 정확히 추적 가능
 
+### cpu/mem/disk 자원 추출 출력 예시
+
+cpu_IDLE = $(top -bn1 | ...)
+top 출력 :
+```
+%Cpu(s): 14.8 us, 2.1 sy, 0.0 ni, 83.1 id ...
+                                    ↑ idle값
+100 - 83.1 = 16.9% 사용 중
+```
+
+MEM=$(free | awk ...)
+free 출력 :
+```
+total   used   free
+Mem:  8000MB  520MB  ...
+      $2      $3
+520 / 8000 * 100 = 6.5%
+```
+
+DISK=$(df / | awk 'NR==2 {gsub(/%/,"",$5); print $5}')
+df 출력 :
+```
+Filesystem  1K-blocks  Used  Available  Use%  Mounted
+/dev/sda1   102400     1024  ...        1%    /
+                                        $5 → % 제거 → 1
+```
+
 ---
 
 ## 8. crontab 등록 및 자동 실행 확인
